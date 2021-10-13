@@ -1,9 +1,10 @@
-LDLIBS=-lpcap
+LDLIBS=-lpcap -pthread
 
-all: send-arp-test
 
-send-arp-test: main.o arphdr.o ethhdr.o ip.o mac.o
+all: arp-spoofing
+
+arp-spoofing: main.o arphdr.o ethhdr.o ip.o mac.o
 	$(LINK.cc) $^ $(LOADLIBES) $(LDLIBS) -o $@
 
 clean:
-	rm -f send-arp-test *.o *~ 
+	rm -f arp-spoofing *.o *~ 
